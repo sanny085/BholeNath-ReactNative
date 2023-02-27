@@ -34,14 +34,15 @@ export default function ContactList() {
   ];
   return (
     <View>
-      <Text>ContactList</Text>
-      <ScrollView style={styles.container} scrollEnabled={false}>
+      <Text style={styles.headingText}>ContactList</Text>
+      <ScrollView style={styles.container} scrollEnabled={true}>
         {contacts.map(({id, title, country, src, blog}) => (
           <View style={styles.userCard} key={id}>
             <Image source={{uri: src}} style={styles.userImage} />
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.country}>{country}</Text>
-            <Text>{title}</Text>
+            <View>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.country}>{country}</Text>
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -50,13 +51,38 @@ export default function ContactList() {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  userCard: {},
+  headingText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingHorizontal: 8,
+  },
+  container: {
+    paddingHorizontal: 16,
+    marginVertical: 3,
+  },
+  userCard: {
+    flex: 1,
+    flexDirection: 'row',
+    marginVertical: 6,
+    alignItems: 'center',
+    backgroundColor: '#E07C24',
+    padding: 8,
+    borderRadius: 6,
+  },
   userImage: {
     height: 60,
     width: 60,
     borderRadius: 60 / 2,
+    marginRight: 14,
   },
-  title: {},
-  country: {},
+
+  title: {
+    fontSize: 16,
+    color: '#242B2E',
+    fontWeight: '600',
+  },
+  country: {
+    fontSize: 12,
+    color: '#CAD5E2',
+  },
 });
